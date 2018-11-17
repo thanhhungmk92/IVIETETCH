@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).on('input', '#slider', function() {
+    $('#slider_value').html( $(this).val() );
+    
+});
+
+</script>
+</head>
+<body>
+
+<input type="range" id="slider" value="0.5" min="0.0" max="900" step="0.01" />
+
+<br />
+
+<span id="slider_value">Nothing yet.</span>
+
+<input id="getRange" type = "button" value="lay gia tri"/>
+<script>
+$("#getRange").click(function(){
+    alert($('#slider').val());
+    });
+</script>
+</body>
+</html>

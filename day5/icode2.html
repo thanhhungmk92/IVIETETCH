@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="UTF8">
+	<link rel="stylesheet" type="text/css" href="css/style.css"> 
+	<style>
+	input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("#submit").click(function(){
+		var result = "";
+        code = $("#code").val();
+		var length = code.length;
+		if(length > 3){
+			result = code.substring(0, 3); 
+			var mod =  Math.floor(length/3);
+			if(mod == 1){
+				result += '-' + code.substring(3,length); 
+			}else{
+				for (i = 1; i < mod+1; i++) { 
+					if(i != mod){ 
+					result += '-' + code.substring((3*i),(3*i)+3);
+					}else if(i>=mod && (length%3)==0){
+						result += ''+ code.substring((3*i),length);
+					}
+                    else if((length%3)!=0)
+                    {
+                        result += '-'+ code.substring((3*i),length);
+                    }
+				}
+			}
+		}else if(length > 0){
+			result = code.substring(0, 3);
+		}
+		$("#result").html(result);
+        alert("Email cá»§a báº¡n lÃ : " +result);
+
+    });
+});
+</script>
+</head>
+<body>
+	<!---hh-->
+	<!---trong the input radio buoc ten phai giong nhau-->
+	<!---hh-->
+    <!---trong the input radio buoc ten phai giong nhau-->
+   <h3>NGĂN SỐ</h3>
+
+<div>
+  <form  method="post">
+    <label for="fname">ID:</label>
+    <input type="text" id="code" name="code" placeholder="CODE">
+
+    <label for="lname">CODE:</label>
+    <input type="text" id="id" name="id" placeholder="ID"> 
+   <input type="hidden" value="action" name="action">
+    <input id= "submit" type="submit" value="Thực hiện">
+    <span id='result'><?php echo $result; ?></span>
+  </form>
+</div>
+
+</body>
+</html>
